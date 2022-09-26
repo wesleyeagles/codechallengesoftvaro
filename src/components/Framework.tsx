@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import { StyledFramework } from "./styled/StyledFramework";
 
 export function Framework() {
     return (
+        <Router>
         <StyledFramework>
             <h2>
                 A framework built for the long term
@@ -22,8 +23,7 @@ export function Framework() {
 					Read how Hapu’s tribal background defines our app
 				</span>
 			</Link>
-
-
         </StyledFramework>
+        </Router>
     )
 }

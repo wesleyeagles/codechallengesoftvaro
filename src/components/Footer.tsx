@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { StyledBox } from "./styled/StyledBox";
+import { BrowserRouter, Link } from "react-router-dom";
 import { StyledFooter } from "./styled/StyledFooter";
 
 import HapuLogo from '../utils/Logo.svg';
@@ -9,8 +8,9 @@ import InstagramIcon from '../utils/Instagram.svg';
 
 export function Footer() {
     return (
+        <BrowserRouter>
         <StyledFooter>
-            <StyledBox>
+            <div className="footer__box">
                 <div className="footer__left__column">
                     <Link to='/'>
                         <img src={HapuLogo} alt='Hapu Logo' />
@@ -45,11 +45,12 @@ export function Footer() {
 						<img src={InstagramIcon} alt='Instagram' />
 					</Link>
                 </div>
-            </StyledBox>
+            </div>
             <p className='divider' />
             <h5 className='footer__copyright'>
 				Copyright © 2017 Hapu PTY Limited All rights reserved
 			</h5>
         </StyledFooter>
+        </BrowserRouter>
     )
 }

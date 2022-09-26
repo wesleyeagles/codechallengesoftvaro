@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { StyledHost } from "./styled/StyledHost";
 
 import CalendarIcon from '../utils/CalendarIcon.svg';
 
 export function Host() {
     return (
+		<BrowserRouter>
         <StyledHost>
             <h2>
                 Become a nanny share host
@@ -35,5 +36,6 @@ export function Host() {
 				</span>
 			</Link>
         </StyledHost>
+		</BrowserRouter>
     )
 }

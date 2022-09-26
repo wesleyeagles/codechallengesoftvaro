@@ -1,19 +1,22 @@
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { StyledBox } from "./styled/StyledBox";
 import { StyledPayments } from "./styled/StyledPayments";
 
 import ImgSec3 from '../images/ImageSection3.png'
+import { Container } from "./styled/Container";
 
 export function Payments() {
     return (
+        <BrowserRouter>
         <StyledPayments>
-            <StyledBox>
+            <Container>
+                <div className="payments__wrapper">
                 <div className="payments__left__column">
                     <img src={ImgSec3} alt="Payments share console" />
                 </div>
 
                 <div  className="payments__right__column">
-                    <h2>
+                    <h2 role='h2'>
                         Shared payments made simple
                     </h2>
 
@@ -33,8 +36,10 @@ export function Payments() {
 						</span>
                     </Link>
                 </div>
-            </StyledBox>
-            <span className='divider' />
+                <span className='divider' />
+                </div>
+                </Container>
         </StyledPayments>
+        </BrowserRouter>
     )
 }

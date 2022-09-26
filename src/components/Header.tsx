@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom'
+import { BrowserRouter, Link } from 'react-router-dom'
 import { Container } from './styled/Container'
 import { StyledHeader } from './styled/StyledHeader'
-
+import { GoogleLogin, GoogleLogout } from 'react-google-login'; 
 import Badge from '../utils/Badge.svg'
+import { useAuth } from '../hooks/useAuth';
+
 
 export function Header() {
+
+    const { isLogged, onFailure, onLogoutSuccess, onSuccess, userImage} = useAuth()
+
     return (
+        <BrowserRouter>
         <Container>
-            <StyledHeader>
+            <StyledHeader id='header'> 
                 <div className='header__left__column'>
                     <div className='badge-logo'>
                         <Link to='/'>
@@ -35,11 +41,32 @@ export function Header() {
                         <h5>Become a Nanny Share Host</h5>
                     </button>
 
-                    <Link className='navigation__link' to='/login'>
-                        <h5>Sign In</h5>
-                    </Link>
+                    <div className='header__google__login__btn'>
+                    {isLogged?
+                    <div className='header__google__loggedIn'> 
+                    <div className='header__user__photo'>
+                        <img src={userImage} alt="user-photo" />
+                    </div>
+                    <GoogleLogout
+                    clientId={`${process.env.VITE_GOOGLE_CLIENT_ID}`}
+                    buttonText='Sign Out' 
+                    onLogoutSuccess={onLogoutSuccess}                       
+                    />
+                    </div>
+                    :
+                    <GoogleLogin 
+                    clientId={`${process.env.VITE_GOOGLE_CLIENT_ID}`} 
+                    buttonText="Sign In" 
+                    onSuccess={onSuccess} 
+                    onFailure={onFailure}
+                    cookiePolicy={'single_host_origin'} 
+                    responseType='code,token' 
+                    />
+                    }
+                    </div>
                 </div>
             </StyledHeader>
         </Container>
+        </BrowserRouter>
     )
 }

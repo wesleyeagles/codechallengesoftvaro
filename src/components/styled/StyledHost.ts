@@ -8,6 +8,10 @@ export const StyledHost = styled.section`
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 1000px) {
+        height: 340px;
+    }
+
     h2, p {
         text-align: center;
         margin-bottom: 20px;
