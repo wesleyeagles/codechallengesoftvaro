@@ -1,6 +1,5 @@
 ## Requirements
 
-* Node 14.17.0
 * Newsapi Key
 * Google API ID
 
